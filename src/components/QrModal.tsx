@@ -131,7 +131,8 @@ export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
         <div className="text-xs text-slate-300 space-y-1 mb-4">
           <div className="font-semibold text-white">{personalInfo.fullName.en}</div>
           <div className="font-arabic text-blue-300 font-bold">{personalInfo.fullName.ar}</div>
-          <div className="text-slate-400 font-mono">{personalInfo.mobile}</div>
+          <div className="text-slate-400 text-[11px]">Sarah Specialty Hospital · Irbid, Jordan</div>
+          <div className="text-slate-400 text-[11px] font-arabic">مستشفى سارة التخصصي · إربد - الأردن</div>
         </div>
 
         <button
@@ -139,7 +140,7 @@ export const QrModal: React.FC<QrModalProps> = ({ isOpen, onClose }) => {
           className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-semibold shadow transition-all cursor-pointer font-arabic"
         >
           <Download className="w-4 h-4" />
-          <span>حفظ جهة الاتصال (.vcf) في الهاتف</span>
+          <span>حفظ بطاقة المقر المؤسسي (.vcf) في الهاتف</span>
         </button>
       </div>
     </div>

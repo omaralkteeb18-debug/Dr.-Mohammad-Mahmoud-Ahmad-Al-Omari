@@ -1,5 +1,3 @@
-import { personalInfo } from '../data/resumeData';
-
 export function generateVCard(): string {
   return [
     'BEGIN:VCARD',
@@ -8,10 +6,9 @@ export function generateVCard(): string {
     'N:Al-Omari;Mohammad;Mahmoud Ahmad;Dr.;',
     'TITLE:CEO & Head of Anesthesia Department | المدير التنفيذي لمستشفى سارة ورئيس قسم التخدير',
     'ORG:Sarah Specialty Hospital | مستشفى سارة التخصصي',
-    `TEL;TYPE=CELL,VOICE:${personalInfo.mobile}`,
-    `EMAIL;TYPE=PREF,INTERNET:${personalInfo.email}`,
-    `ADR;TYPE=WORK:;;Sarah Specialty Hospital, Irbid;Irbid;;;Jordan`,
-    'NOTE:Consultant Anesthesiologist & Hospital CEO. Over 15 years executive and clinical healthcare leadership in Jordan and Saudi Arabia.',
+    'ADR;TYPE=WORK:;;Sarah Specialty Hospital, Irbid;Irbid;;;Jordan',
+    'EMAIL;TYPE=PREF,INTERNET:Mohalomari35@yahoo.com',
+    'NOTE:Consultant Anesthesiologist & Hospital CEO. Official Office Facility: Sarah Specialty Hospital, Irbid, Jordan.',
     'URL:https://sarahhospital.com',
     'END:VCARD'
   ].join('\r\n');
@@ -23,7 +20,7 @@ export function downloadVCard(): void {
   const url = URL.createObjectURL(blob);
   const link = document.createElement('a');
   link.href = url;
-  link.setAttribute('download', 'Dr_Mohammad_Al_Omari_CV_Contact.vcf');
+  link.setAttribute('download', 'Dr_Mohammad_Al_Omari_Hospital_Facility.vcf');
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);

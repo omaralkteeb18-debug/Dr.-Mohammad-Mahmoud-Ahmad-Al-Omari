@@ -30,12 +30,11 @@ ${personalInfo.fullName.ar}
 ============================================================
 ${personalInfo.titles[0].ar}
 ${personalInfo.titles[1].ar}
-${personalInfo.hospital.ar} - ${personalInfo.location.ar}
-الهاتف: ${personalInfo.mobile}
+المقر المؤسسي: ${personalInfo.hospital.ar} - ${personalInfo.location.ar}
 البريد الإلكتروني: ${personalInfo.email}
-العنوان: ${personalInfo.address.ar}
-تاريخ الميلاد: ${personalInfo.dateOfBirth} (${personalInfo.placeOfBirth.ar})
-الجنسية: ${personalInfo.nationality.ar} | الحالة الاجتماعية: ${personalInfo.maritalStatus.ar} | الجنس: ${personalInfo.gender.ar}
+التواصل: عبر مكتب إدارة المستشفى (بوابة المراسلة الرسمية)
+العنوان المؤسسي: ${personalInfo.address.ar}
+الجنسية: ${personalInfo.nationality.ar} | الاعتماد: استشاري تخدير معتمد (المجلس الطبي الأردني)
 
 ============================================================
 الملخص المهني والتنفيذي
@@ -93,12 +92,11 @@ ${personalInfo.fullName.en.toUpperCase()}
 ============================================================
 ${personalInfo.titles[0].en}
 ${personalInfo.titles[1].en}
-${personalInfo.hospital.en} - ${personalInfo.location.en}
-Phone: ${personalInfo.mobile}
+Hospital Facility: ${personalInfo.hospital.en} - ${personalInfo.location.en}
 Email: ${personalInfo.email}
+Contact: Institutional Inquiries via Office of the CEO & Sarah Specialty Hospital
 Address: ${personalInfo.address.en}
-Date of Birth: ${personalInfo.dateOfBirth} (${personalInfo.placeOfBirth.en})
-Nationality: ${personalInfo.nationality.en} | Marital Status: ${personalInfo.maritalStatus.en} | Gender: ${personalInfo.gender.en}
+Nationality: ${personalInfo.nationality.en} | Licensure: Board Certified Consultant (JMC)
 
 ============================================================
 PROFESSIONAL SUMMARY
@@ -158,9 +156,9 @@ ${personalInfo.fullName.ar}
 ${personalInfo.titles[0].en} | ${personalInfo.titles[0].ar}
 ${personalInfo.titles[1].en} | ${personalInfo.titles[1].ar}
 ${personalInfo.hospital.en} | ${personalInfo.hospital.ar}
-Phone | الهاتف: ${personalInfo.mobile}
 Email | البريد: ${personalInfo.email}
-Address | العنوان: ${personalInfo.address.en} | ${personalInfo.address.ar}
+Facility | المقر: ${personalInfo.address.en} | ${personalInfo.address.ar}
+Inquiries | التواصل: Official Institutional Inquiries Gateway | بوابة المراسلة المؤسسية الرسمية
 
 ============================================================
 PROFESSIONAL SUMMARY | الملخص المهني

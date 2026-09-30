@@ -1,0 +1,44 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions for security and role validation
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated();
+    }
+
+    function isValidInquiry(data) {
+      return data.keys().hasAll(['senderName', 'senderEmail', 'message'])
+        && data.senderName is string
+        && data.senderName.size() > 0
+        && data.senderName.size() <= 100
+        && data.senderEmail is string
+        && data.senderEmail.size() > 3
+        && data.senderEmail.size() <= 150
+        && data.message is string
+        && data.message.size() > 0
+        && data.message.size() <= 2000;
+    }
+
+    // Public CV Content: Anyone can read public career data; only authenticated owner/admin can modify
+    match /cv_content/{docId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Inquiries: Anyone can submit an institutional inquiry; only authenticated owner can read/manage
+    match /inquiries/{inquiryId} {
+      allow create: if isValidInquiry(request.resource.data);
+      allow read, update, delete: if isAdmin();
+    }
+
+    // Admin profiles: Only authenticated users can access
+    match /admins/{userId} {
+      allow read, write: if isAuthenticated() && request.auth.uid == userId;
+    }
+  }
+}

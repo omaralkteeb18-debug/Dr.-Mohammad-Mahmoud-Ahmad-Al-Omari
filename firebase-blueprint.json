@@ -1,0 +1,63 @@
+{
+  "entities": {
+    "CvContent": {
+      "title": "CvContent",
+      "description": "Executive CV professional content and configuration",
+      "type": "object",
+      "properties": {
+        "fullName": { "type": "object", "description": "Bilingual full name" },
+        "titles": { "type": "array", "description": "Executive titles" },
+        "hospital": { "type": "object", "description": "Hospital name" },
+        "location": { "type": "object", "description": "Location" },
+        "summary": { "type": "object", "description": "Professional summary" },
+        "privacySettings": { "type": "object", "description": "Public visibility flags for sensitive contact data" },
+        "privateContact": { "type": "object", "description": "Owner contact details" },
+        "experience": { "type": "array", "description": "Experience items" },
+        "education": { "type": "array", "description": "Education items" },
+        "competencies": { "type": "array", "description": "Competencies" },
+        "referees": { "type": "array", "description": "Referees" },
+        "updatedAt": { "type": "string" },
+        "updatedBy": { "type": "string" }
+      }
+    },
+    "ContactInquiry": {
+      "title": "ContactInquiry",
+      "description": "Inbound professional inquiries from public visitors without exposing private contact info",
+      "type": "object",
+      "properties": {
+        "senderName": { "type": "string" },
+        "senderEmail": { "type": "string" },
+        "organization": { "type": "string" },
+        "subject": { "type": "string" },
+        "message": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["senderName", "senderEmail", "message"]
+    },
+    "AdminUser": {
+      "title": "AdminUser",
+      "description": "Owner and administrative access credentials and roles",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "role": { "type": "string", "enum": ["owner", "admin"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["email", "role"]
+    }
+  },
+  "firestore": {
+    "/cv_content/{docId}": {
+      "schema": { "$ref": "CvContent" },
+      "description": "Public and administrative CV content documents"
+    },
+    "/inquiries/{inquiryId}": {
+      "schema": { "$ref": "ContactInquiry" },
+      "description": "Inbound professional messages for the owner"
+    },
+    "/admins/{userId}": {
+      "schema": { "$ref": "AdminUser" },
+      "description": "Admin access control collection"
+    }
+  }
+}

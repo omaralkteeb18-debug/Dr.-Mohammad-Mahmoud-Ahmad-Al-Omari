@@ -31,10 +31,12 @@ import { DisplayLang } from './A4Resume';
 
 interface InteractiveProfileProps {
   displayLang?: DisplayLang;
+  onOpenInquiry?: () => void;
 }
 
 export const InteractiveProfile: React.FC<InteractiveProfileProps> = ({
-  displayLang = 'ar'
+  displayLang = 'ar',
+  onOpenInquiry
 }) => {
   const [activeTab, setActiveTab] = useState<'experience' | 'education' | 'competencies' | 'referees'>('experience');
   const isAr = displayLang === 'ar';
@@ -121,27 +123,29 @@ export const InteractiveProfile: React.FC<InteractiveProfileProps> = ({
             {/* Quick Actions */}
             <div className={`pt-2 flex flex-wrap items-center justify-center ${isAr ? 'md:justify-start' : 'md:justify-start'} gap-3 text-xs font-medium`}>
               <a 
-                href={`tel:${personalInfo.mobile.replace(/\s+/g, '')}`}
-                className="flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg shadow transition-colors cursor-pointer"
+                href={`mailto:${personalInfo.email}`}
+                className="flex items-center gap-1.5 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg shadow transition-colors cursor-pointer font-bold"
               >
-                <Phone className="w-3.5 h-3.5" />
-                <span className="font-bold">{isAr ? `اتصال (${personalInfo.mobile})` : `Call (${personalInfo.mobile})`}</span>
+                <Mail className="w-3.5 h-3.5" />
+                <span dir="ltr">{personalInfo.email}</span>
               </a>
 
-              <a 
-                href={`mailto:${personalInfo.email}`}
-                className="flex items-center gap-1.5 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 rounded-lg transition-colors cursor-pointer"
-              >
-                <Mail className="w-3.5 h-3.5 text-blue-400" />
-                <span>{personalInfo.email}</span>
-              </a>
+              {onOpenInquiry && (
+                <button 
+                  onClick={onOpenInquiry}
+                  className="flex items-center gap-1.5 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 rounded-lg shadow transition-colors cursor-pointer"
+                >
+                  <Building2 className="w-3.5 h-3.5 text-cyan-400" />
+                  <span>{isAr ? 'تواصل مؤسسي (المستشفى)' : 'Hospital Office Gateway'}</span>
+                </button>
+              )}
 
               <button 
                 onClick={downloadVCard}
                 className="flex items-center gap-1.5 px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 rounded-lg transition-colors cursor-pointer font-semibold"
               >
                 <Download className="w-3.5 h-3.5 text-emerald-400" />
-                <span>{isAr ? 'حفظ جهة الاتصال (.vcf)' : 'Save Contact (.vcf)'}</span>
+                <span>{isAr ? 'بطاقة الاتصال (.vcf)' : 'Contact Card (.vcf)'}</span>
               </button>
             </div>
 
